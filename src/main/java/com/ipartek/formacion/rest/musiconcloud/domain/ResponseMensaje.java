@@ -1,15 +1,15 @@
 package com.ipartek.formacion.rest.musiconcloud.domain;
 
-public class ReponseMensaje {
+public class ResponseMensaje {
 
 	private String info;
 
-	public ReponseMensaje() {
+	public ResponseMensaje() {
 		super();
 		this.info = "";
 	}
 	
-	public ReponseMensaje( String info ) {
+	public ResponseMensaje( String info ) {
 		this();
 		this.info = info;
 	}
