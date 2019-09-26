@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipartek.formacion.rest.musiconcloud.domain.Cancion;
-import com.ipartek.formacion.rest.musiconcloud.domain.ReponseMensaje;
+import com.ipartek.formacion.rest.musiconcloud.domain.ResponseMensaje;
 import com.ipartek.formacion.rest.musiconcloud.model.CancionesRepository;
 
 import io.swagger.annotations.Api;
@@ -31,6 +31,7 @@ import io.swagger.annotations.ApiOperation;
 public class CancionesController {
 
 	@Autowired
+	//hace una inyeccion de dependencias, en el momento que lo necesite lo genera
 	CancionesRepository cancionesRepository;
 
 	@RequestMapping(value = { "/cancion/", "/cancion" }, method = RequestMethod.GET)
@@ -86,7 +87,7 @@ public class CancionesController {
 		try {
 
 			cancionesRepository.deleteById(id);
-			result = new ResponseEntity<Object>(new ReponseMensaje("registro eliminado") , HttpStatus.OK);
+			result = new ResponseEntity<Object>(new ResponseMensaje("registro eliminado") , HttpStatus.OK);
 
 		} catch (EmptyResultDataAccessException e) {
 			result = new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
@@ -110,7 +111,7 @@ public class CancionesController {
 
 		} catch (DataIntegrityViolationException e) {
 
-			result = new ResponseEntity<Object>(new ReponseMensaje("Existe el nombre de la Cancion"),
+			result = new ResponseEntity<Object>(new ResponseMensaje("Existe el nombre de la Cancion"),
 					HttpStatus.CONFLICT);
 		} catch (Exception e) {
 			e.printStackTrace();
